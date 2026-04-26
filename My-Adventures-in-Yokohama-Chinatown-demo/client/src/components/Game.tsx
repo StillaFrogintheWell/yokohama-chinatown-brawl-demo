@@ -104,10 +104,11 @@ export default function Game() {
   }, []);
 
   const startGame = useCallback(() => {
-    totalScoreRef.current = 0;
-    currentStageRef.current = 0;
-    startStage(0);
-  }, [startStage]);
+  audioManagerRef.current?.unlock();
+  totalScoreRef.current = 0;
+  currentStageRef.current = 0;
+  startStage(0);
+}, [startStage]);
 
   const nextStage = useCallback(() => {
     const next = currentStageRef.current + 1;
